@@ -1,0 +1,16 @@
+config VIDEO_ARDUCAM_MEGA
+	bool "Arducam MEGA SPI camera driver"
+	default y
+	depends on DT_HAS_ARDUCAM_MEGA_ENABLED
+	select SPI
+	select VIDEO
+	help
+	  Enable driver for the Arducam MEGA series SPI camera modules
+	  (3MP and 5MP variants).
+
+	  The driver implements the Zephyr video subsystem API and
+	  communicates with the camera over a 4-wire SPI bus at up to
+	  8 MHz (SPI mode 0).
+
+	  Captured frames are placed into caller-supplied video_buffer
+	  objects via the standard enqueue/dequeue API.

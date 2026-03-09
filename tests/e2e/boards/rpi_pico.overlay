@@ -1,0 +1,23 @@
+/*
+ * Board overlay for Raspberry Pi Pico (RP2040).
+ *
+ * Arducam MEGA wiring:
+ *   MOSI  -> GP19 (SPI0_TX)
+ *   MISO  -> GP16 (SPI0_RX)
+ *   SCK   -> GP18 (SPI0_SCK)
+ *   CS    -> GP17
+ *   VCC   -> 3.3 V
+ *   GND   -> GND
+ */
+
+&spi0 {
+	status = "okay";
+	cs-gpios = <&gpio0 17 GPIO_ACTIVE_LOW>;
+
+	arducam_mega_cam: camera@0 {
+		compatible = "arducam,mega";
+		reg = <0>;
+		spi-max-frequency = <8000000>;
+		label = "ARDUCAM_MEGA";
+	};
+};

@@ -1,0 +1,18 @@
+sample:
+  name: Arducam MEGA Capture Sample
+  description: >
+    Demonstrates single-shot JPEG capture with the Arducam MEGA SPI camera
+    module using Zephyr's video subsystem API.
+
+tests:
+  sample.drivers.video.arducam_mega.capture:
+    tags:
+      - video
+      - arducam
+      - drivers
+    build_only: true
+    platform_allow:
+      - nucleo_f401re
+      - rpi_pico
+      - nrf52840dk/nrf52840
+      - esp32_devkitc_wroom/esp32/procpu

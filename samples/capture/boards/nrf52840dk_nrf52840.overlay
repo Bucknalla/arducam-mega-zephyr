@@ -1,0 +1,16 @@
+/* nRF52840 DK – copy of tests/e2e/boards overlay */
+&spi3 {
+	compatible = "nordic,nrf-spim";
+	status = "okay";
+	cs-gpios = <&gpio0 15 GPIO_ACTIVE_LOW>;
+	mosi-pin = <13>;
+	miso-pin = <12>;
+	sck-pin  = <14>;
+
+	arducam_mega_cam: camera@0 {
+		compatible = "arducam,mega";
+		reg = <0>;
+		spi-max-frequency = <8000000>;
+		label = "ARDUCAM_MEGA";
+	};
+};

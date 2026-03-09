@@ -1,0 +1,12 @@
+/* STM32 NUCLEO-F401RE – copy of tests/e2e/boards overlay */
+&spi1 {
+	status = "okay";
+	cs-gpios = <&gpioa 4 GPIO_ACTIVE_LOW>;
+
+	arducam_mega_cam: camera@0 {
+		compatible = "arducam,mega";
+		reg = <0>;
+		spi-max-frequency = <8000000>;
+		label = "ARDUCAM_MEGA";
+	};
+};

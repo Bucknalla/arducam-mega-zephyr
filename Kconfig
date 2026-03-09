@@ -1,0 +1,4 @@
+# Copyright (c) 2024, Arducam MEGA Zephyr Driver Contributors
+# SPDX-License-Identifier: Apache-2.0
+
+rsource "drivers/video/Kconfig"

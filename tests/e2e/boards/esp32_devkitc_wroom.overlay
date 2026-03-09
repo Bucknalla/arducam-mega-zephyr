@@ -1,0 +1,27 @@
+/*
+ * Board overlay for ESP32-DevKitC (WROOM).
+ *
+ * Arducam MEGA wiring:
+ *   MOSI  -> GPIO23 (VSPI MOSI)
+ *   MISO  -> GPIO19 (VSPI MISO)
+ *   SCK   -> GPIO18 (VSPI CLK)
+ *   CS    -> GPIO5
+ *   VCC   -> 3.3 V
+ *   GND   -> GND
+ */
+
+&spi3 {
+	/* VSPI on ESP32 */
+	status = "okay";
+	#address-cells = <1>;
+	#size-cells    = <0>;
+
+	cs-gpios = <&gpio0 5 GPIO_ACTIVE_LOW>;
+
+	arducam_mega_cam: camera@0 {
+		compatible = "arducam,mega";
+		reg = <0>;
+		spi-max-frequency = <8000000>;
+		label = "ARDUCAM_MEGA";
+	};
+};

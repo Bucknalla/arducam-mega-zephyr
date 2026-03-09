@@ -1,0 +1,24 @@
+/*
+ * DTS overlay for Arducam MEGA unit tests on native_sim / qemu_x86.
+ *
+ * We instantiate a fake SPI bus with an arducam,mega node so that the
+ * driver's DT_HAS_ARDUCAM_MEGA_ENABLED dependency resolves to true and
+ * the driver is compiled in.  Real SPI transfers in unit tests are
+ * handled by the SPI emulation driver (CONFIG_SPI_EMUL).
+ */
+
+/ {
+	spi_emul_bus: spi@0 {
+		compatible = "zephyr,spi-emul-controller";
+		reg = <0x0 0x100>;
+		#address-cells = <1>;
+		#size-cells = <0>;
+
+		arducam: camera@0 {
+			compatible = "arducam,mega";
+			reg = <0>;
+			spi-max-frequency = <8000000>;
+			label = "ARDUCAM_MEGA_EMUL";
+		};
+	};
+};

@@ -1,0 +1,21 @@
+tests:
+  drivers.video.arducam_mega.e2e:
+    tags:
+      - video
+      - arducam
+      - drivers
+      - requires_hw
+    # E2E tests need a real camera: build-only on boards without the overlay
+    build_only: true
+    platform_allow:
+      - nucleo_f401re
+      - rpi_pico
+      - nrf52840dk/nrf52840
+      - esp32_devkitc_wroom/esp32/procpu
+    harness: ztest
+    harness_config:
+      type: one_line
+      regex:
+        - "PROJECT EXECUTION SUCCESSFUL"
+    # To actually run on hardware, remove build_only and attach the board
+    # with a physical Arducam MEGA camera connected.

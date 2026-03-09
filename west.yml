@@ -1,0 +1,37 @@
+manifest:
+  version: "0.13"
+
+  # -----------------------------------------------------------------------
+  # Remotes
+  # -----------------------------------------------------------------------
+  remotes:
+    - name: zephyrproject-rtos
+      url-base: https://github.com/zephyrproject-rtos
+
+    - name: arducam-mega-zephyr
+      url-base: https://github.com/Bucknalla
+
+  # -----------------------------------------------------------------------
+  # Projects
+  # -----------------------------------------------------------------------
+  projects:
+    # Zephyr RTOS kernel + drivers
+    - name: zephyr
+      remote: zephyrproject-rtos
+      revision: v3.7.0
+      import:
+        # Pull in the default Zephyr west extensions (hal_*, crypto, …)
+        - name: west.yml
+
+    # This module itself (when used as part of a larger workspace)
+    - name: arducam-mega-zephyr
+      remote: arducam-mega-zephyr
+      revision: main
+      path: modules/arducam-mega-zephyr
+
+  # -----------------------------------------------------------------------
+  # Self – the manifest repository
+  # -----------------------------------------------------------------------
+  self:
+    path: arducam-mega-zephyr
+    west-commands: scripts/west-commands.yml

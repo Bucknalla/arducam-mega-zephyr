@@ -1,0 +1,22 @@
+tests:
+  drivers.video.arducam_mega.unit:
+    tags:
+      - video
+      - arducam
+      - drivers
+    arch_allow:
+      - x86
+      - arm
+      - posix
+    platform_allow:
+      - native_sim
+      - native_sim/native/64
+      - qemu_x86
+    integration_platforms:
+      - native_sim
+    build_only: false
+    harness: ztest
+    harness_config:
+      type: one_line
+      regex:
+        - "PROJECT EXECUTION SUCCESSFUL"

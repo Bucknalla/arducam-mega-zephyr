@@ -1,0 +1,27 @@
+/*
+ * Board overlay for Nordic nRF52840 DK.
+ *
+ * Arducam MEGA wiring:
+ *   MOSI  -> P0.13 (SPI3_MOSI / Arduino D11)
+ *   MISO  -> P0.12 (SPI3_MISO / Arduino D12)
+ *   SCK   -> P0.14 (SPI3_SCK  / Arduino D13)
+ *   CS    -> P0.15 (Arduino D10)
+ *   VCC   -> VDD (3.3 V)
+ *   GND   -> GND
+ */
+
+&spi3 {
+	compatible = "nordic,nrf-spim";
+	status = "okay";
+	cs-gpios = <&gpio0 15 GPIO_ACTIVE_LOW>;
+	mosi-pin = <13>;
+	miso-pin = <12>;
+	sck-pin  = <14>;
+
+	arducam_mega_cam: camera@0 {
+		compatible = "arducam,mega";
+		reg = <0>;
+		spi-max-frequency = <8000000>;
+		label = "ARDUCAM_MEGA";
+	};
+};
